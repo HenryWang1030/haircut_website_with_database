@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Henry's Haircut</title>
+</head>
+<body>
+    <h1>Henry's Haircut</h1>
+    <p>Your convenience is our duty</p>
+
+    <!-- Item 1 -->
+    <p>Mike: 12 RMB</p>
+    <img src="https://tse2-mm.cn.bing.net/th?id=OIP.Bg9im9K9m551pAZKe514hwHaE8&w=246&h=163&c=7&o=5&pid=1.7">
+
+    <!-- Item 2 -->
+    <p>David: 10 RMB</p>
+    <img src="https://tse1-mm.cn.bing.net/th?id=OIP.CjAQex6_978VueCecNygKQHaHa&w=171&h=172&c=7&o=5&pid=1.7">
+
+    <!-- Item 3 --> 
+    <p>Louis: 70 RMB</p>
+    <img src="https://tse3-mm.cn.bing.net/th?id=OIP.ntvKYZ6uubawRQJsR7lLYwHaEK&w=293&h=163&c=7&o=5&pid=1.7">
+
+    <!-- User Form -->
+    <h1>Place Your Order</h1>
+    <form action="{% url 'haircut:home_page' %} " method="POST">
+        {% csrf_token %}
+        <input type="text" name="time" placeholder="Type Your Time"><br>
+        <input type="text" name="barber_name" placeholder="Type Barber_name"><br>
+        <textarea placeholder="Text your Name" name="customer_name"></textarea><br>
+        <input type="submit" value="Buy Now!">
+    </form>
+
+
+
+<!-- Display Previous Comments -->
+    <h2>Appointment</h2>
+    {% for appointment in appointments %}
+        <p>Time: {{appointment.time}}</p>
+        <p>Barber name: {{appointment.barber_name}}</p>
+        <p>Customer name: {{appointment.customer_name}}</p>
+    {% endfor %}
+
+
+</body>
+</html>
